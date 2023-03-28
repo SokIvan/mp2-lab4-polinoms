@@ -35,6 +35,7 @@ struct Polinom {
 	void show_polinom();
 	double solve(double x, double y, double z);
 	void string_to_polinom(string polim);
+	~Polinom();
 };
 
 double string_to_double(string s);

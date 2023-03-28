@@ -140,6 +140,7 @@ Polinom Polinom::operator*(Polinom second)
 	for (auto it1 = head; it1 != nullptr; it1 = it1->next)
 		for (auto it2 = second.head; it2 != nullptr; it2 = it2->next)
 		{
+			if (it1->xyz + it2->xyz > 1000 || it1->xyz % 100 + it2->xyz % 100 > 100 || it1->xyz % 10 + it2->xyz % 10 > 10) throw invalid_argument("Over limit of stepen");
 			A.push(it1->k * it2->k, it1->xyz + it2->xyz);
 		}
 	return A;
@@ -302,6 +303,21 @@ void Polinom::string_to_polinom(string polim)
 		}
 
 	}
+}
+
+Polinom::~Polinom()
+{
+/*	if (head != nullptr)
+	{
+		auto it_tmp = head;
+		for (auto it = head->next; it != nullptr; it = it->next)   // Ќикак не получаетс€ построить деструктор, который не будет удал€ть локальную пам€ть
+		{                                                         //  в операторах + и -, там создаетс€ новый объект в который все записываетс€, но по окончанию
+			delete[]it_tmp;                                      //   оператора у него вызываетс€ деструктор и все мономы у него стираютс€, дела€ эти операторы
+			it_tmp = it;                                        //    бесполезными. ѕросьба объ€снить как обойти такую проблему.
+		}
+		delete[]it_tmp;
+	}
+*/
 }
 
 double string_to_double(string s)
